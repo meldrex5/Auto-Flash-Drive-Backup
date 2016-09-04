@@ -82,6 +82,9 @@ mkdir C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime%
 xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E 
 
 
+=======
+xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E
+>>>>>>> refs/remotes/origin/master
 goto end
 
 

@@ -43,10 +43,9 @@
 
 ::User Variables: Type - Case Sensitive
 
-set myAccountName= btm71
-set myComputerName= ULTRAXPS
-set myDriveLetter= d
-
+set myComputerName= DEFINER4
+set myAccountName= Brendan
+set myDriveLetter= e
 
 
 :PROGRAM
@@ -85,7 +84,7 @@ goto end
 
 :failure
 echo ----------
-echo There was a failure somwhere in the backup process.  Ensure drive is inserted and try again.
+echo There was a failure somwhere in the backup process.  Ensure settings are correct, drive is inserted and try again.
 pause
 
 :end

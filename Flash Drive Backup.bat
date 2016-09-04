@@ -39,7 +39,6 @@
 
 set myUserName= Brendan
 set myComputerName= DEFINER4
-set myDriveLetter= e
 set myDriveLetter=e
 
 
@@ -80,6 +79,7 @@ set /p datetime=
 
 mkdir C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime%
 
+xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E 
 
 
 goto end

@@ -1,21 +1,22 @@
 @echo off
 
-:: Version 1.4
+:: Version 1.4.2
 :: Created by Brendan Murphy 
 ::
 :: INSTRUCTIONS
 ::
-:: I. To use this program you must create a .txt file called "DriveValidation.txt" in the root 
-::	directory of the drive.
+:: I. To use this program you must Validate your Drive.  To do this simply run the program and type "Y" when prompted.
 ::
 :: II. When you are given this program it will likely not work the first time.  This is
 ::	because you need to set the "User Variables" found below.  All ARE case sensitive.
-::		a) myAccountName: The name of your account, program will only work on this account.
-
+::	After altering any settings you must save the file for changes to take effect.
+:: 
+::		a) myAccountName: The name of your login account, program will only work on this account.
+::
 ::		b) myComputerName: The name of your computer, program will only work on this account.
 ::			To find, right click on "This PC" in File Explorer and click on "Properties"
 ::				THIS MUST BE CAPILALIZED
-
+::
 ::		c) myDriveLetter: The letter assigned to the drive you want to back up.
 ::			To find, look at the letter next to the drive name in File Explorer.
 ::			(Omit everything except the letter itself)
@@ -43,9 +44,24 @@
 
 ::User Variables
 
-set myAccountName= btm71
-set myComputerName= ULTRAXPS
-set myDriveLetter= d
+set myAccountName= Brendan
+set myComputerName= DEFINER4
+set myDriveLetter=e
+
+:: YOU MUST SAVE THIS FILE AFTER CHANGING USER VARIABLES
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -57,13 +73,15 @@ set myDriveLetter= d
 if exist %myDriveLetter%:\DriveValidation.txt goto Device Validation
 echo Validation File not found.  Would you like to create it on drive %myDriveLetter%?
 choice
-if errorlevel==0 echo This file allows the autobackup script on %myComputerName% to function.  To disable, rename this file. >%myDriveLetter%:\DriveValidation.txt & cls & goto Device Validation 
-if errorlevel==1 goto end
+if errorlevel==2 cls & echo You have chosen to not create the Drive Validation File. To create it, run program again. This window will now close. & pause & goto end
+if errorlevel==1 cls & echo Creating File... & ping localhost>nul & echo This file allows the autobackup script on %myComputerName% to function.  To disable backups, delete this file. >%myDriveLetter%:\DriveValidation.txt & goto Device Validation 
 
 
 
-echo Open this file in Notepad to read Instructions and Change Settings
+echo Open this file in Notepad (or edit) to read Instructions and Change Settings
 :Device Validation
+cls
+
 if %computername% == %myComputerName% echo Computer Validation: PASSED
 if not %computername% == %myComputerName% echo Computer Validation: FAILED & goto failure 
 

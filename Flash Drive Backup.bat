@@ -41,13 +41,11 @@
 
 ::SETTINGS
 
-<<<<<<< HEAD
 set myUserName= Brendan
 set myComputerName= DEFINER4
 set myDriveLetter=e
 =======
 ::User Variables: Type - Case Sensitive
->>>>>>> refs/remotes/origin/master
 
 set myAccountName= btm71
 set myComputerName= ULTRAXPS
@@ -94,14 +92,12 @@ set /p datetime=
 ::  time THEN copys files from drive to the new directory.
 
 mkdir C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime%
-<<<<<<< HEAD
+
 
 xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E 
 
 
-=======
-xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E
->>>>>>> refs/remotes/origin/master
+
 goto end
 
 

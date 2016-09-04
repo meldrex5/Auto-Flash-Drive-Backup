@@ -1,6 +1,6 @@
 @echo off
 
-:: Version 1.3.1
+:: Version 1.4
 :: Created by Brendan Murphy 
 ::
 :: INSTRUCTIONS
@@ -41,17 +41,12 @@
 
 ::SETTINGS
 
-<<<<<<< HEAD
-set myUserName= Brendan
-set myComputerName= DEFINER4
-set myDriveLetter=e
-=======
-::User Variables: Type - Case Sensitive
->>>>>>> refs/remotes/origin/master
+::User Variables
 
-set myComputerName= DEFINER4
-set myAccountName= Brendan
-set myDriveLetter= e
+set myAccountName= btm71
+set myComputerName= ULTRAXPS
+set myDriveLetter= d
+
 
 
 :PROGRAM
@@ -93,17 +88,12 @@ set /p datetime=
 ::  time THEN copys files from drive to the new directory.
 
 mkdir C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime%
-<<<<<<< HEAD
+
 
 xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E 
 
 
-=======
-xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E
->>>>>>> refs/remotes/origin/master
 goto end
-
-
 
 
 :failure

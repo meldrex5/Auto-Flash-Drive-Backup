@@ -40,10 +40,22 @@
 set myUserName= Brendan
 set myComputerName= DEFINER4
 set myDriveLetter= e
+set myDriveLetter=e
 
 
 
 :begin
+
+::This section will create (or overwrite) the root drive validation file.  
+
+
+if exist %myDriveLetter%:\DriveValidation.txt goto Device Validation
+echo Validation File not found.  Would you like to create it on drive %myDriveLetter%?
+choice
+if errorlevel==0 echo This file allows the autobackup script on %myComputerName% to function.  To disable, rename this file. >%myDriveLetter%:\DriveValidation.txt & cls & goto Device Validation 
+if errorlevel==1 goto end
+
+
 
 echo Open this file in Notepad to read Instructions and Change Settings
 :Device Validation
@@ -68,7 +80,6 @@ set /p datetime=
 
 mkdir C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime%
 
-xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E
 
 
 goto end

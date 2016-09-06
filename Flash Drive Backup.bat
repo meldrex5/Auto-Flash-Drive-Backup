@@ -1,13 +1,14 @@
 @echo off
 
-:: Version 1.4.2
+:: Version 1.4.3
 :: Created by Brendan Murphy 
 :: To download the newest version of this tool go to https://github.com/meldrex5/Auto-Flash-Drive-Backup/archive/master.zip
 ::
 :: INSTRUCTIONS
 ::
 :: I. To use this program you must allow it to create "DriveValidation.txt" in the root on the
-::	the drive you want to back up.
+::	the drive you want to back up.  This program will allow the creation of the validation file
+::	on ANY attached drive. Ensure the drive you create the file on is the one you intend to back up.
 ::	
 ::
 :: II. When you are given this program it will likely not work the first time. This is
@@ -44,8 +45,8 @@
 
 ::User Variables
 
-set myComputerName= ULTRAXPS
-set myDriveLetter= d
+set myComputerName= DEFINER4
+set myDriveLetter=e
 
 
 :: YOU MUST SAVE THIS FILE AFTER CHANGING USER VARIABLES
@@ -70,7 +71,7 @@ set myDriveLetter= d
 
 :Pre-Run
 
-if not exist %myDriveLetter%:\ echo The selected drive is not attached.  Change to another by editing this file. & pause & goto end
+if not exist %myDriveLetter%:\ echo The selected drive %myDriveLetter% is not attached.  Change to another drive by editing this file. & pause & goto end
 
 ::This section will create the root drive validation file.  
 
@@ -78,8 +79,8 @@ if exist %myDriveLetter%:\DriveValidation.txt goto Device Validation
 echo Validation File not found. Would you like to create it on drive %myDriveLetter%?
 choice
 
-if errorlevel==2 cls & echo You have chosen to not create the Drive Validation File. To create it, run program again. This window will now close. & pause & goto end
-if errorlevel==1 cls & echo Creating File... & ping localhost>nul & echo This file allows the autobackup script on %myComputerName% to function.  To disable backups, delete this file. >%myDriveLetter%:\DriveValidation.txt & goto Device Validation 
+if errorlevel==2 cls & echo You have chosen to not create the Drive Validation File. To create it, run this program again. This window will now close. & pause & goto end
+if errorlevel==1 cls & echo Creating File... & ping localhost>nul & echo This file allows the autobackup script on %myComputerName% to function.  To disable backups, delete this file. >%myDriveLetter%:\DriveValidation.txt.nomedia & cls & echo File Created! & pause & goto Device Validation 
 
 
 
@@ -114,7 +115,6 @@ mkdir C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime%
 
 
 xcopy %myDriveLetter%:\ C:\Users\%username%\Documents\"Flash Drive Auto Backups"\%datetime% /E 
-
 
 goto end
 

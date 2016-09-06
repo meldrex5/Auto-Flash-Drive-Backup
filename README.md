@@ -1,23 +1,24 @@
 # Auto-Flash-Drive-Backup
 A Windows Batch tool that automagically backs up a drive to a specific location.
 
-Version 1.4
+Version 1.4.3
 :: Created by Brendan Murphy 
 :: To download the newest version of this tool go to https://github.com/meldrex5/Auto-Flash-Drive-Backup/archive/master.zip
 ::
 :: INSTRUCTIONS
 ::
 :: I. To use this program you must allow it to create "DriveValidation.txt" in the root on the
-::	the drive you want to back up.
+::	the drive you want to back up.  This program will allow the creation of the validation file
+::	on ANY attached drive. Ensure the drive you create the file on is the one you intend to back up.
 ::	
 ::
 :: II. When you are given this program it will likely not work the first time. This is
-::	because you need to change the "User Variables" found in the program file. All are case sensitive.
+::	because you need to change the "User Variables" found below. All are case sensitive.
 ::
 ::		a) myComputerName: The name of your computer, program will only work on this account.
 ::			To find, right click on "This PC" in File Explorer and click on "Properties".
 ::				THIS MUST BE IN ALL CAPS 
-
+::
 ::		b) myDriveLetter: The letter assigned to the drive you want to back up.
 ::			To find, look at the letter next to the drive name in File Explorer.
 ::			(Omit everything except the letter itself)

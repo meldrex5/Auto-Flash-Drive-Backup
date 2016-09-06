@@ -1,6 +1,6 @@
 @echo off
 
-:: Version 1.4
+:: Version 1.4.2
 :: Created by Brendan Murphy 
 :: To download the newest version of this tool go to https://github.com/meldrex5/Auto-Flash-Drive-Backup/archive/master.zip
 ::
@@ -16,7 +16,7 @@
 ::		a) myComputerName: The name of your computer, program will only work on this account.
 ::			To find, right click on "This PC" in File Explorer and click on "Properties".
 ::				THIS MUST BE IN ALL CAPS 
-
+::
 ::		b) myDriveLetter: The letter assigned to the drive you want to back up.
 ::			To find, look at the letter next to the drive name in File Explorer.
 ::			(Omit everything except the letter itself)
@@ -48,6 +48,23 @@ set myComputerName= ULTRAXPS
 set myDriveLetter= d
 
 
+:: YOU MUST SAVE THIS FILE AFTER CHANGING USER VARIABLES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 :PROGRAM
 
@@ -60,15 +77,16 @@ if not exist %myDriveLetter%:\ echo The selected drive is not attached.  Change 
 if exist %myDriveLetter%:\DriveValidation.txt goto Device Validation
 echo Validation File not found. Would you like to create it on drive %myDriveLetter%?
 choice
-if errorlevel==2 echo You have chosen not to validate your drive. Re-run program if this was a mistake & pasue & goto end
-if errorlevel==1 echo This file allows the autobackup script on %myComputerName% to function. To disable, rename this file. >%myDriveLetter%:\DriveValidation.txt & cls & goto Device Validation 
+
+if errorlevel==2 cls & echo You have chosen to not create the Drive Validation File. To create it, run program again. This window will now close. & pause & goto end
+if errorlevel==1 cls & echo Creating File... & ping localhost>nul & echo This file allows the autobackup script on %myComputerName% to function.  To disable backups, delete this file. >%myDriveLetter%:\DriveValidation.txt & goto Device Validation 
 
 
 
-
-echo Open this file in Notepad to read Instructions and Change Settings
-
+echo Open this file in Notepad (or edit) to read Instructions and Change Settings
 :Device Validation
+cls
+
 
 if %computername% == %myComputerName% echo Computer Validation: PASSED
 if not %computername% == %myComputerName% echo Computer Validation: FAILED & goto failure 
